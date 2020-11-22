@@ -52,7 +52,7 @@ namespace ProductManager.Controllers
             return GroupAllByBrand().ToDictionary(d => d.Key, d => d.Value.OrderBy(p => p.Price).ToList());
         }
 
-        public List<Product> GetAllProductByCategoyUnderPrice(Category category, decimal price)
+        public List<Product> GetAllProductByCategoryUnderPrice(Category category, decimal price)
         {
             return GetAllByCategory(category).Where(p => p.Price < price).ToList();
         }

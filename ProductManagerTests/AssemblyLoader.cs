@@ -79,11 +79,17 @@ namespace ProductManagerTests
                     .GetMethods()
                     .FirstOrDefault(i => i.Name.ToLower() == methodName);
         }
-        public MethodInfo GetMethodByParametersTypes(string typeName, string methodName, List<Type> types)
+        public List<Type> GetMethodParametersTypes(string typeName, string methodName)
         {
             return
                 GetType(typeName)
-                    .GetMethod(methodName, types.ToArray());
+                    .GetMethods()
+                    .Where(m => m.Name.ToLower() == methodName)
+                    .FirstOrDefault()
+                    ?.GetParameters()
+                    .Select(p => p.ParameterType)
+                    .ToList();
+                    
         }
 
         public List<ParameterInfo> GetMethodParameters(string typeName, string methodName)
@@ -144,6 +150,11 @@ namespace ProductManagerTests
         public Type MakeGenericType(string typeName, string genericTypeName)
         {
             return GetType(typeName).MakeGenericType(GetType(genericTypeName));
+        }
+
+        public Type MakeGenericTypes(string typeName, params Type[] genericTypes)
+        {
+            return GetType(typeName).MakeGenericType(genericTypes);
         }
     }
 }

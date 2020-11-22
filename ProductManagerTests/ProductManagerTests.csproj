@@ -52,6 +52,8 @@
     <Compile Include="AssemblyLoader.cs" />
     <Compile Include="BaseDataTests.cs" />
     <Compile Include="ControllersTests\BaseCrudControllerTests.cs" />
+    <Compile Include="ControllersTests\BrandControllerTests.cs" />
+    <Compile Include="ControllersTests\ProductControllerTests.cs" />
     <Compile Include="ModelsTests\BrandTests.cs" />
     <Compile Include="ModelsTests\ProductTests.cs" />
     <Compile Include="ModelsTests\CategoryTests.cs" />
